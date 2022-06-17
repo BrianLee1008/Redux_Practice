@@ -41,6 +41,7 @@ class SecondFragment : Fragment() {
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
+        // ERNote popTo 네비게이트 시킬때 특정 popTo로 지정해놓은애까지 다 날리고
         setupListener()
 
     }
@@ -52,7 +53,6 @@ class SecondFragment : Fragment() {
     private fun setOnAddButtonListener(){
         binding.buttonAdd.setOnClickListener {
             mainViewModel.numberAddStoreDispatchTest()
-            // ERNote 클릭 할때마다 + 1, 10이 되면 -1, 0이되면 + 1
         }
     }
 
