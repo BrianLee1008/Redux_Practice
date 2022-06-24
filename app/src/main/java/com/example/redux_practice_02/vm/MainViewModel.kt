@@ -28,11 +28,15 @@ class MainViewModel : ViewModel() {
     //          이전 이벤트에 대한 subscribe까지 누적되는 것. 실제로 SecondFragment 한번 홨다가 Add 계속 누르면 1번씩만 count 됨
     //          해결법은? Fragment 안에서 직접 subscribe 해야하나? ㄴㄴ
     //          add 안누르고 프래그먼트 이동만 세번해도 3 찍힘
-    //          firstFragment 들어올때마다 subscribe 객체 하나씩 생겨서 그런가? -> 싱글톤으로 만들고? -> 안됨 똑같음
+    //          firstFragment 들어올때마다 subscribe 객체 하나씩 생겨서 그런가? -> 싱글톤으로 만들고? -> 안됨 똑같음 -> unSubscribe 해야함
     fun numberAddStoreSubscribeTest() {
         unSubscription = numberAddStore.subscribe {
             Result.success(successCallback(numberAddStore.state.addCount))
         }
+    }
+
+    fun unSubscribeRedux() {
+        unSubscription.invoke()
     }
 
     private fun successCallback(count: Int) {

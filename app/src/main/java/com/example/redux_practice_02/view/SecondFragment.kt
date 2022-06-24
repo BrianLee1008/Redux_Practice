@@ -58,6 +58,7 @@ class SecondFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        mainViewModel.unSubscribeRedux()
         _binding = null
     }
 }
